@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Khelifa Sidahmed — Creative Developer. Motion, Web, Apps, 3D. Showreel 2026.">
+<meta property="og:title" content="KHELIFA SIDAHMED — Showreel 2026"><meta property="og:description" content="Creative Developer · Motion · Web · Apps · 3D"><meta property="og:image" content="poster.jpg"><meta property="og:type" content="video.other">
+<title>KHELIFA SIDAHMED — Showreel</title>
+<style>html,body{margin:0}*{box-sizing:border-box}[hidden]{display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one cinematic screen — film centered, name above, signature below. Single dark look by choice. */
+:root{
+  --bg:#060606; --fg:#ece8e1; --muted:#8d8780; --line:#26231f; --acc:#ff5b22;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--display);padding-inline:clamp(16px,4vw,56px);padding-block:clamp(20px,4vw,48px);min-height:100%;box-sizing:border-box}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(18px,3vw,28px)}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+h1{margin:0;font-weight:800;font-size:clamp(40px,8vw,104px);line-height:.88;letter-spacing:-.05em;text-wrap:balance}
+.meta{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;gap:6px;text-align:right}
+.meta b{color:var(--acc);font-weight:500}
+.film{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line);overflow:hidden}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:16px;border:0;cursor:pointer;
+  background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.15));color:var(--fg);font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase}
+.play i{width:72px;height:72px;border-radius:50%;border:1.5px solid var(--fg);display:grid;place-items:center;transition:transform .25s,border-color .25s}
+.play i::before{content:"";margin-left:5px;border-left:18px solid var(--fg);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.play:hover i,.play:focus-visible i{transform:scale(1.06);border-color:var(--acc)}
+.play:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ks{display:flex;align-items:center;gap:14px;color:var(--fg)}
+.ks span{position:relative;width:38px;height:38px;border:1.5px solid var(--fg);display:grid;place-items:center;font-family:var(--display);font-weight:800;letter-spacing:-.04em;font-size:15px}
+.ks span::after{content:"";position:absolute;right:-4px;bottom:-4px;width:6px;height:6px;background:var(--acc)}
+.disc b{color:var(--acc);font-weight:400}
+@media (max-width:600px){.meta{text-align:left}}
+@media (prefers-reduced-motion:reduce){.play i{transition:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>KHELIFA<br>SIDAHMED</h1>
+    <div class="meta"><span><b>●</b> Showreel 2026</span><span>Creative Developer · Algeria</span></div>
+  </header>
+
+  <div class="film">
+    <video id="reel" src="showreel.mp4" poster="poster.jpg" playsinline preload="metadata"></video>
+    <button class="play" id="play" aria-label="Play showreel with sound"><i></i>Play · 1:06</button>
+  </div>
+
+  <footer class="foot">
+    <div class="ks"><span>KS</span>Building ideas into experiences.</div>
+    <div class="disc">Motion <b>•</b> Web <b>•</b> Apps <b>•</b> 3D</div>
+  </footer>
+</div>
+
+<script>
+const v = document.getElementById('reel'), b = document.getElementById('play');
+b.addEventListener('click', () => { b.hidden = true; v.controls = true; v.play().catch(() => { v.controls = true; }); });
+v.addEventListener('ended', () => { v.controls = false; v.currentTime = 0; b.hidden = false; });
+</script>
+</body></html>
